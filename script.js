@@ -89,15 +89,13 @@ runBtn.addEventListener('click', () => {
 })
 
 // [Start] Function will take action based on where we apply mouseover and mouseout
-let sliderBtns = document.querySelectorAll('.slider-btns');
-let sliderImgs = document.querySelectorAll('.slide');
-let sliderItems = [...sliderBtns, ...sliderImgs, ...sliderNav.childNodes];
+let sliderItems = [nextBtn, prevBtn, ...sliderNavDots, ...slides];
 
-function updateAutoSlidingStatus(elements, event, func) {
+function updateStatusOfAutoSliding (elements, event, func){
     elements.forEach(element => {
         element.addEventListener(event, func);
     })
-}
-// Actions when mouseover and mouseout on and from next and prev btns, slides, dots
-updateAutoSlidingStatus(sliderItems, 'mouseover', stopSlide);
-updateAutoSlidingStatus(sliderItems, 'mouseout', runSlide);
+};
+
+updateStatusOfAutoSliding(sliderItems, 'mouseover', stopSlide);
+updateStatusOfAutoSliding(sliderItems, 'mouseout', runSlide);
